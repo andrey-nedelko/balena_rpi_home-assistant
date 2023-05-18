@@ -1,0 +1,22 @@
+'0x00158d00025d9088':
+  friendly_name: bedroom2_temp
+'0x588e81fffed39244':
+  friendly_name: bedroom2_plug
+'0x00158d000309b27d':
+  friendly_name: bedroom1_temp
+'0x842e14fffe11c2f6':
+  friendly_name: frontdoor_light
+'0x00158d00039668aa':
+  friendly_name: bedroom_relay
+'0x00158d00030594e7':
+  friendly_name: corridor_motion
+'0x00158d0002ea0634':
+  friendly_name: kitchen_motion
+'0x588e81fffed899f6':
+  friendly_name: backdoor_light
+'0x00158d00054c680e':
+  friendly_name: corridor_temp
+'0x842e14fffe11c346':
+  friendly_name: saray_light
+'0x00124b0009de9828':
+  friendly_name: toilet_light

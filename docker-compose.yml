@@ -1,0 +1,63 @@
+version: '2'
+volumes:
+    z2m-data:
+    duplicati_conf:
+    ha_conf:
+services:
+  mqtt:
+    build: ./MQTT
+    restart: always
+    ports:
+      - "1883:1883"
+    command: "mosquitto -c /mosquitto-no-auth.conf"  
+  zigbee2mqtt:
+    build: ./ZIGBEE2MQTT
+    restart: always
+    volumes:
+      - z2m-data:/app/data
+    devices:
+      - /dev/ttyUSB0:/dev/ttyACM0
+    ports:
+      - 8008:8008
+    environment:
+      - DATA=/app/data
+  nginx:
+      build: ./NGINX
+      network_mode: host
+      ports:
+        - "80:80"
+      depends_on:
+          - homeassistant
+          - mqtt
+          - zigbee2mqtt
+  duplicati:
+    image: linuxserver/duplicati:latest
+    environment:
+      PUID: "0"
+      PGID: "0"
+      CLI_ARGS: --webservice-interface=any
+    ports:
+      - 8200:8200/tcp
+    volumes:
+      - duplicati_conf:/config
+      - z2m-data:/source/zigbee2mqtt
+      - ha_conf:/source/homeassistant
+  homeassistant:
+    container_name: homeassistant
+    image: "ghcr.io/home-assistant/home-assistant:2023.4"
+    environment:
+      - TZ=Europe/Moscow
+    volumes:
+      - ha_conf:/config
+    restart: unless-stopped
+    privileged: true
+    network_mode: host
+  hass-configurator:
+    image: "causticlab/hass-configurator-docker:latest"
+    restart: always
+    ports:
+      - "3218:3218"
+    volumes:
+      - 'ha_conf:/hass-config'
+    environment:
+      - HC_BASEPATH=/hass-config                                     
