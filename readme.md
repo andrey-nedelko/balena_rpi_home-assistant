@@ -32,7 +32,7 @@ This repository contains all of the software and configuration you’ll need to 
 3. Use the [balenaCLI](https://github.com/balena-io/balena-cli) to push to your devices. [Read more](https://www.balena.io/docs/learn/deploy/deployment/).
 
 ### First login
-Browse to device's IP adress (You can find the device's IP address in your balenaCloud dashboard) on port 3218 (for example http://192.168.1.42:3218 or http://192.168.1.42/hass-config/) to access hass-configurator.  Open `configuration.yaml` and add this lines to enable reverse proxy:
+Browse to device's IP adress (You can find the device's IP address in your balenaCloud dashboard) on port 3218 (for example http://192.168.1.42:3218 or http://192.168.1.42/hass-conf/) to access hass-configurator.  Open `configuration.yaml` and add this lines to enable reverse proxy:
 ```yaml
 http:
   use_x_forwarded_for: true
@@ -47,7 +47,7 @@ http:
   After this go to balena device dashboard, restart homeassistant container and also obtain a secure public URL for your Home Assistant instance - simply click the "Public Device URL" switch on your balenaCloud dashboard. You'll then see a link to access your unique device URL.
   Setup is done. You can access your device and installed webapps via this addresses:
   - `https://PUBLIC_URL/` - home assistant
-  - `https://PUBLIC_URL/hass-config/` - hass configurator
+  - `https://PUBLIC_URL/hass-conf/` - hass configurator
   - `https://PUBLIC_URL/z2m` - zigbee2mqtt
   - `https://PUBLIC_URL/duplicati` - duplicati backups
 
