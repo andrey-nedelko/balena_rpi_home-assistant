@@ -26,6 +26,11 @@ This repository contains all of the software and configuration you’ll need to 
 * A clone or download of our project from GitHub
 
 ## Software setup
+You can one-click-deploy this project to balena using the button below:
+
+[![deploy with balena](https://balena.io/deploy.svg)](https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/andrey-nedelko/balena_rpi_home-assistant)
+
+Or manual:
 
 1. Clone this repo
 2. Change `docker-compose.yaml` line `/dev/ttyUSB0:/dev/ttyACM0` to `/dev/ttyACM0:/dev/ttyACM0` if you need to change zigbee coordinator port 
